@@ -1,0 +1,27 @@
+machine:
+  pre:
+    - mkdir ~/.yarn-cache
+  node:
+    version: 7.9.0
+dependencies:
+  pre:
+    - curl -o- -L https://yarnpkg.com/install.sh | bash
+  cache_directories:
+    - ~/.yarn-cache
+  override:
+    - yarn install
+test:
+  override:
+    - yarn run lint
+    - yarn test
+deployment:
+  staging:
+    branch: develop
+    commands:
+      - npm run build
+      - aws s3 sync public s3://staging.coinmarket.watch --delete
+  production:
+    branch: master
+    commands:
+      - npm run build
+      - aws s3 sync public s3://coinmarket.watch --delete
