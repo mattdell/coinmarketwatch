@@ -18,7 +18,7 @@ const Currency = (props) => {
           <span>{numeral(props.price_usd).format('$0,0.00')}</span>
         </div>
         <div className="column text-align-right">
-          <span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{changePercent1h.format('+0,0.00')}</span>
+          <span><span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{changePercent1h.format('+0,0.00')}</span> / hr</span>
         </div>
       </div>
     </div>
