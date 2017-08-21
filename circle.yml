@@ -15,6 +15,11 @@ test:
     - yarn run lint
     - yarn test
 deployment:
+  feature:
+    branch: /feature.*/
+    commands:
+      - npm run build
+      - aws s3 sync public s3://feature.staging.coinmarket.watch --delete
   staging:
     branch: develop
     commands:

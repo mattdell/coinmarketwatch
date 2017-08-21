@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import 'milligram/dist/milligram.css';
 
 import Header from '../components/Header';
@@ -18,33 +19,36 @@ class Index extends React.PureComponent {
       response: [],
     };
   }
+
   componentDidMount() {
-    request('https://api.coinmarketcap.com/v1/ticker/?limit=12')
-      .then((response) => {
-        this.setState({
-          isLoading: false,
-          response,
-        });
-      });
+    this.fetchCurrencies();
   }
 
-  fetchAllCurrencies() {
-    this.setState({
-      isLoading: true,
-      hasSelectedShowMoreButton: true,
-      response: null,
-    });
-
+  fetchCurrencies() {
     request('https://api.coinmarketcap.com/v1/ticker/')
       .then((response) => {
         this.setState({
           isLoading: false,
           response,
+          lastUpdated: moment.utc(),
         });
+
+        setTimeout(() => this.fetchCurrencies(), 10000);
       });
   }
 
+  showAllCurrencies() {
+    this.setState({
+      hasSelectedShowMoreButton: true,
+    });
+  }
+
   render() {
+    const { response, lastUpdated, hasSelectedShowMoreButton } = this.state;
+    const currencyData = !hasSelectedShowMoreButton
+      ? response.slice(0, 10)
+      : response;
+
     return (
       <div>
         <Header color="white" />
@@ -56,17 +60,26 @@ class Index extends React.PureComponent {
           )
         }
         {
-          this.state.response && (
+          currencyData && (
             <div className="container">
               {
-                this.state.response.map(currency => (
+                lastUpdated && (
+                  <div className="row">
+                    <div className="column">
+                      <p>{`Last updated: ${lastUpdated.format()}`}</p>
+                    </div>
+                  </div>
+                )
+              }
+              {
+                currencyData.map(currency => (
                   <Currency key={currency.id} {...currency} />
                 ))
               }
               {
-                !this.state.hasSelectedShowMoreButton && (
+                !hasSelectedShowMoreButton && (
                   <div className="button-container center">
-                    <button className="button button-outline" onClick={() => this.fetchAllCurrencies()}>See all</button>
+                    <button className="button button-outline" onClick={() => this.showAllCurrencies()}>See all</button>
                   </div>
                 )
               }
