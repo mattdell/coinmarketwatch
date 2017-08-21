@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import moment from 'moment';
 import 'milligram/dist/milligram.css';
 
@@ -51,6 +52,14 @@ class Index extends React.PureComponent {
 
     return (
       <div>
+        <Helmet
+          title="Coinmarket Watch - Cryptocurrency Prices"
+          meta={[
+            { name: 'description', content: 'Coinmarket Watch - Cryptocurrency Prices' },
+            { name: 'keywords', content: 'bitcoin,cryptocurrency,ethereum,ripple,neo,antshares,iota,litecoin,nem,dash,monero' },
+            { name: 'author', content: 'Matt Dell' },
+          ]}
+        />
         <Header color="white" />
         {
           this.state.isLoading && (
