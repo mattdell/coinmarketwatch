@@ -112,3 +112,16 @@ a {
 .text-xlarge {
   font-size: $font-size-xlarge;
 }
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.updated-time {
+  margin-bottom: 10px;
+  padding: 2px;
+}

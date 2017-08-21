@@ -77,7 +77,7 @@ class Index extends React.PureComponent {
                 lastUpdated && (
                   <div className="row">
                     <div className="column">
-                      <p className="text-medium">{`Updated: ${lastUpdated.format('HH:mm:ss')}`}</p>
+                      <p className="updated-time text-medium">{`Updated: ${lastUpdated.format('HH:mm:ss')}`}</p>
                     </div>
                   </div>
                 )
