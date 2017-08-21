@@ -4,7 +4,9 @@ import moment from 'moment';
 import 'milligram/dist/milligram.css';
 
 import Header from '../components/Header';
+import CurrencyHeader from '../components/CurrencyHeader';
 import Currency from '../components/Currency';
+import Footer from '../components/Footer';
 
 import { request } from '../utils/ApiUtils';
 
@@ -69,17 +71,18 @@ class Index extends React.PureComponent {
           )
         }
         {
-          currencyData && (
+          currencyData.length > 0 && (
             <div className="container">
               {
                 lastUpdated && (
                   <div className="row">
                     <div className="column">
-                      <p>{`Last updated: ${lastUpdated.format()}`}</p>
+                      <p className="updated-time text-medium">{`Updated: ${lastUpdated.format('HH:mm:ss')}`}</p>
                     </div>
                   </div>
                 )
               }
+              <CurrencyHeader />
               {
                 currencyData.map(currency => (
                   <Currency key={currency.id} {...currency} />
@@ -95,6 +98,7 @@ class Index extends React.PureComponent {
             </div>
           )
         }
+        <Footer />
       </div>
     );
   }

@@ -1,26 +1,28 @@
 @import "../../node_modules/font-awesome/css/font-awesome.css";
+@import "../variables";
 
 body {
   text-rendering: optimizeLegibility;
   margin: 0;
-  background-color: #f5f5f5;
-  color: #1a1a1a;
+  background-color: $grey-light;
+  color: $grey-dark;
 }
 
 h1 {
   font-weight: 400;
-  font-size: 3rem;
+  font-size: $font-size-xlarge;
 }
 
 h3 {
-  font-size: 2rem;
+  font-size: $font-size-large;
   font-weight: 400;
   margin: 0;
 }
 
 a {
-  color: inherit;
+  color: $blue;
   text-decoration: none;
+  font-weight: 400;  
 }
 
 .hide-sm {
@@ -44,11 +46,11 @@ a {
 }
 
 .red {
-  color: #ff0033;
+  color: $red;
 }
 
 .green {
-  color: #00B21E;
+  color: $green;
 }
 
 .display-inline {
@@ -66,13 +68,13 @@ a {
 }
 
 .button {
-  color: #0968BF;
-  background-color: #0968BF;
-  border-color: #0968BF;
+  color: $blue;
+  background-color: $blue;
+  border-color: $blue;
 
   &.button-outline {
-    color: #0968BF;
-    border-color: #0968BF;
+    color: $blue;
+    border-color: $blue;
   }
 }
 
@@ -93,4 +95,33 @@ a {
 
 .text-align-right {
   text-align: right;
+}
+
+.text-small {
+  font-size: $font-size-small;
+}
+
+.text-medium {
+  font-size: $font-size-medium;
+}
+
+.text-large {
+  font-size: $font-size-large;
+}
+
+.text-xlarge {
+  font-size: $font-size-xlarge;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.updated-time {
+  margin-bottom: 10px;
+  padding: 2px;
 }
