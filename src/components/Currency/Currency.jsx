@@ -5,7 +5,7 @@ import cx from 'classnames';
 import styles from './Currency.module.scss';
 
 const Currency = (props) => {
-  const changePercent1h = numeral(props.percent_change_1h);
+  const changePercent1h = numeral(props.percent_change_24h);
   const isChangePercent1hPositive = changePercent1h.value() >= 0;
 
   return (
@@ -18,11 +18,11 @@ const Currency = (props) => {
           <span>{numeral(props.price_usd).format('$0,0.00')}</span>
         </div>
         <div className="column text-align-right">
-          <span><span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{changePercent1h.format('+0,0.00')}</span> / hr</span>
+          <span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{changePercent1h.format('+0,0.00')}</span>
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 Currency.propTypes = {
@@ -35,8 +35,8 @@ Currency.propTypes = {
   // market_cap_usd: React.PropTypes.string,
   // available_supply: React.PropTypes.string,
   // total_supply: React.PropTypes.string,
-  percent_change_1h: React.PropTypes.string,
-  // percent_change_24h: React.PropTypes.string, 
+  // percent_change_1h: React.PropTypes.string,
+  percent_change_24h: React.PropTypes.string, 
   // percent_change_7d: React.PropTypes.string,
   // last_updated: React.PropTypes.string,
 };
