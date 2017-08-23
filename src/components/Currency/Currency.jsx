@@ -19,19 +19,19 @@ const Currency = (props) => {
           <h3 className="display-inline">{props.name}</h3>
         </div>
         <div className="column text-align-right hide-sm">
-          <span>{numeral(props.market_cap_usd).format('$0,0.00')}</span>
+          <span>{numeral(props.market_cap_usd).format('$0,0')}</span>
         </div>
         <div className="column text-align-right">
           <span>{numeral(props.price_usd).format('$0,0.00')}</span>
         </div>
         <div className="column text-align-right hide-sm">
-          <span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{changePercent1h.format('+0,0.00')}</span>
+          <span className={cx({ red: !isChangePercent1hPositive, green: isChangePercent1hPositive })}>{`${changePercent1h.format('+0,0.00')}%`}</span>
         </div>
         <div className="column text-align-right">
-          <span className={cx({ red: !isChangePercent24hPositive, green: isChangePercent24hPositive })}>{changePercent24h.format('+0,0.00')}</span>
+          <span className={cx({ red: !isChangePercent24hPositive, green: isChangePercent24hPositive })}>{`${changePercent24h.format('+0,0.00')}%`}</span>
         </div>
         <div className="column text-align-right hide-sm">
-          <span className={cx({ red: !isChangePercent7hPositive, green: isChangePercent7hPositive })}>{changePercent7d.format('+0,0.00')}</span>
+          <span className={cx({ red: !isChangePercent7hPositive, green: isChangePercent7hPositive })}>{`${changePercent7d.format('+0,0.00')}%`}</span>
         </div>
       </div>
     </div>
